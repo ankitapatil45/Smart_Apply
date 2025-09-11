@@ -1,6 +1,3 @@
-from flask import Blueprint
-
-
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 from models import  Job, JobStatus, CompanyEmployee
@@ -106,4 +103,4 @@ def get_hr_jobs():
         })
  
     return jsonify({"jobs": job_list}), 200
- 
+  

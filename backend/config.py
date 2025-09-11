@@ -3,7 +3,7 @@ from datetime import timedelta
 
 class Config:
     # PostgreSQL
-    SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://postgres:2001@localhost:5432/smart_apply_system"
+    SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://postgres:1122@localhost:5432/smart_apply_system"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Secret key
