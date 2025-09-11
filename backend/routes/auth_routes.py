@@ -112,33 +112,46 @@ def login():
 
 
 #-------------- CANDIDATE REGISTER-------------
-@auth_bp.route("/candidate_register", methods=["POST"])
+@auth_bp.route("/register_candidate", methods=["POST"])
 def register_candidate():
     data = request.get_json()
+    if not data:
+        return jsonify({"error": "Missing request body"}), 400
+ 
     name = data.get("name")
     email = data.get("email")
     phone = data.get("phone")
     password = data.get("password")
-
-    if not all([name, email, password]):
-        return jsonify({"error": "Name, email, and password are required"}), 400
-
-    # Check duplicate email
+ 
+    if not name or not email or not password:
+        return jsonify({"error": "Name, email and password are required"}), 400
+ 
+    # Check if email already exists
     if Candidate.query.filter_by(email=email).first():
-        return jsonify({"error": "Email already exists"}), 400
-
-    candidate = Candidate(
+        return jsonify({"error": "Email already registered"}), 400
+ 
+    hashed_pw = generate_password_hash(password)
+ 
+    new_candidate = Candidate(
         name=name,
         email=email,
         phone=phone,
-        password=generate_password_hash(password)
+        password_hash=hashed_pw,
     )
-    db.session.add(candidate)
+ 
+    db.session.add(new_candidate)
     db.session.commit()
-
-    return jsonify({"message": "Candidate registered successfully", "candidate_id": candidate.candidate_id}), 201
-
-
+ 
+    return jsonify({
+        "message": "Candidate registered successfully",
+        "candidate": {
+            "id": new_candidate.candidate_id,
+            "name": new_candidate.name,
+            "email": new_candidate.email,
+            "phone": new_candidate.phone,
+        }
+    }), 201
+ 
 
 @auth_bp.route("/logout", methods=["POST"])
 @jwt_required()

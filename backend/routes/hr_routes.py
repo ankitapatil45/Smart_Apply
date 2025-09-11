@@ -81,8 +81,15 @@ def create_or_update_job():
 #===========================
 @hr_bp.route("/jobs", methods=["GET"])
 @jwt_required()
-def get_all_jobs():
-    # anyone logged in (admin/hr/candidate) can view jobs
+def get_hr_jobs():
+    current_user_id = get_jwt_identity()  # logged-in HR id
+    claims = get_jwt()
+ 
+    # Ensure only HR can access this route
+    if claims.get("role") != "hr":
+        return jsonify({"error": "Only HRs can view this"}), 403
+ 
+    # Fetch all jobs posted by this HR
     jobs = Job.query.all()
  
     job_list = []
@@ -93,10 +100,10 @@ def get_all_jobs():
             "description": job.description,
             "requirements": job.requirements,
             "location": job.location,
-            "status": job.status.value if job.status else None,  # Enum -> string
-            "is_active": (job.status == JobStatus.ACTIVE),       # ✅ direct check
-            "posted_by": job.posted_by,
+            "status": job.status.value,
+            "is_active": (job.status == JobStatus.ACTIVE),
             "created_at": job.created_at.isoformat() if job.created_at else None
         })
  
     return jsonify({"jobs": job_list}), 200
+ 

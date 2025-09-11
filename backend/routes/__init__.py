@@ -4,6 +4,7 @@ from .job_routes import job_bp
 from .application_routes import application_bp
 from .admin_routes import admin_bp
 from .candidate_routes import candidate_bp
+from routes.home_routes import home_bp
 
 
 def register_routes(app):
@@ -14,3 +15,4 @@ def register_routes(app):
     app.register_blueprint(application_bp)
     app.register_blueprint(admin_bp)
     app.register_blueprint(candidate_bp)
+    app.register_blueprint(home_bp)

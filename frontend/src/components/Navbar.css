@@ -1,0 +1,98 @@
+/* src/components/Navbar.css */
+
+/* Navbar */
+.navbar {
+  width: 100vw;
+  height: 70px;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  padding: 0px 20px;
+  display: flex;
+  border-bottom: 3px solid #4b0808;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+  color: #2563eb;
+  white-space: nowrap;
+}
+
+.nav-search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  max-width: 400px;
+  margin: 0 20px;
+}
+
+.nav-search input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.nav-search button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.nav-search button:hover {
+  background: #1e40af;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-right nav {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-right nav a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #555;
+  transition: 0.3s;
+}
+
+.nav-right nav a:hover {
+  color: #2563eb;
+}
+
+.profile-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #2563eb;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.profile-link:hover {
+  background: #1e40af;
+}
