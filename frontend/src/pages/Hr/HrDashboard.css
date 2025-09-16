@@ -1,0 +1,59 @@
+.hr-dashboard {
+  padding: 20px;
+  background: #f8f9fc;
+  min-height: 100vh;
+}
+ 
+/* Header */
+.dashboard-header {
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+ 
+.dashboard-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 22px;
+  font-weight: 600;
+}
+ 
+/* Navigation */
+.dashboard-nav {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+ 
+.dashboard-nav a {
+  text-decoration: none;
+  padding: 10px 18px;
+  background: #fff;
+  border-radius: 6px;
+  color: #333;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+ 
+.dashboard-nav a:hover {
+  background: #007bff;
+  color: #fff;
+}
+ 
+.dashboard-nav a.active {
+  background: #007bff;
+  color: #fff;
+}
+ 
+/* Main content */
+.dashboard-content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+ 
+ 

@@ -1,0 +1,151 @@
+/* src/components/CandidateProfile.css */
+
+.candidate-profile {
+  max-width: 950px;
+  margin: 30px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", sans-serif;
+  color: #333;
+}
+
+/* Title */
+.candidate-profile h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #2c3e50;
+  border-bottom: 3px solid #3498db;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* Status messages */
+.status {
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #27ae60;
+}
+.status.error {
+  color: #e74c3c;
+}
+
+/* Profile grid (read-only view) */
+.profile-details {
+  text-align: left;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 25px;
+  margin-bottom: 20px;
+}
+
+.profile-grid p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.profile-grid strong {
+  color: #2c3e50;
+}
+
+/* Form (edit mode) */
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-form label {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #34495e;
+}
+
+.profile-form input,
+.profile-form select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.profile-form input:focus,
+.profile-form select:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+/* Buttons */
+button {
+  padding: 10px 18px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Primary */
+button[type="submit"],
+button:not([type]) {
+  background: #3498db;
+  color: #fff;
+}
+
+button[type="submit"]:hover,
+button:not([type]):hover {
+  background: #2980b9;
+}
+
+/* Cancel */
+button[type="button"] {
+  background: #bdc3c7;
+  color: #2c3e50;
+}
+
+button[type="button"]:hover {
+  background: #95a5a6;
+}
+
+/* Resume link styled as button */
+.profile-grid a {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #3498db;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.profile-grid a:hover {
+  background: #2980b9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .candidate-profile {
+    padding: 15px;
+  }
+
+  .candidate-profile h2 {
+    font-size: 22px;
+  }
+}

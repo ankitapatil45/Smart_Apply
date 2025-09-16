@@ -1,0 +1,59 @@
+/* Card container */
+.postjob-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  margin: 0 auto;
+}
+ 
+.form-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+ 
+/* Form styling */
+.postjob-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+ 
+.postjob-form input,
+.postjob-form textarea,
+.postjob-form select {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+ 
+.postjob-form input:focus,
+.postjob-form textarea:focus,
+.postjob-form select:focus {
+  border-color: #007bff;
+}
+ 
+/* Button */
+.submit-btn {
+  background: #007bff;   /* Blue */
+  color: #fff;           /* White text */
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+ 
+.submit-btn:hover {
+  background: #0056b3;   /* Darker blue on hover */
+}
+ 

@@ -1,15 +1,39 @@
 import React from "react";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import "./HrDashboard.css";
 
-export default function HrDashboard() {
+const HrDashboard = () => {
+  const location = useLocation();
+
   return (
     <div className="hr-dashboard">
-      <div className="welcome-card">
-        <h1>Welcome, HR!</h1>
-        <p>
-          Manage users, view reports, and configure settings from your
-          dashboard. Stay updated and take action as needed.
-        </p>
-      </div>
+      {/* Header */}
+      <header className="dashboard-header">
+        <h2>HR Dashboard</h2>
+      </header>
+
+      {/* Navigation */}
+      <nav className="dashboard-nav">
+        <Link
+          to="post-job"
+          className={location.pathname.includes("post-job") ? "active" : ""}
+        >
+          Post Job
+        </Link>
+        <Link
+          to="all-jobs"
+          className={location.pathname.includes("all-jobs") ? "active" : ""}
+        >
+          All Jobs
+        </Link>
+      </nav>
+
+      {/* Main content */}
+      <main className="dashboard-content">
+        <Outlet />
+      </main>
     </div>
   );
-}
+};
+
+export default HrDashboard;

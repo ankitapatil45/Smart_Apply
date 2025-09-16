@@ -1,0 +1,51 @@
+/* src/pages/Admin/ManageHr.css */
+.manage-hr-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.manage-hr-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.manage-hr-container th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.manage-hr-container th {
+  background-color: #f4f4f4;
+}
+
+.manage-hr-container button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.manage-hr-container button:hover {
+  opacity: 0.8;
+}
+
+.manage-hr-container button:first-of-type {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.manage-hr-container button:last-of-type {
+  background-color: #dc3545;
+  color: white;
+}
+
+.message {
+  margin-bottom: 15px;
+  color: green;
+}

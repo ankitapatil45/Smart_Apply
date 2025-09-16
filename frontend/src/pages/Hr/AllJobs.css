@@ -1,0 +1,85 @@
+/* Card container */
+.alljobs-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  margin: 0 auto;
+}
+ 
+.jobs-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+ 
+/* Empty state */
+.no-jobs {
+  text-align: center;
+  color: #777;
+  font-size: 15px;
+}
+ 
+/* Job list */
+.job-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+ 
+.job-item {
+  background: #f9fafc;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+ 
+.job-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+ 
+.job-item h4 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #007bff;
+}
+ 
+.job-item p {
+  margin: 4px 0;
+  color: #555;
+  font-size: 14px;
+}
+ 
+/* Status labels */
+.status {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+ 
+.status.active {
+  background: #d4edda;
+  color: #155724;
+}
+ 
+.status.draft {
+  background: #fff3cd;
+  color: #856404;
+}
+ 
+.status.closed {
+  background: #f8d7da;
+  color: #721c24;
+}
+ 
+ 

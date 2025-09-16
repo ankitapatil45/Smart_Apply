@@ -1,7 +1,7 @@
 // src/components/Navbar.jsx
 import React from "react";
 import { Search, User } from "lucide-react";
-import "./Navbar.css";
+import "./Hrnavbar.css";
 
 export default function Navbar() {
   return (
@@ -19,8 +19,8 @@ export default function Navbar() {
         <nav>
           <a href="/homepage">Home</a>
           <a href="/jobs">Jobs</a>
-          <a href="/companies">Companies</a>
-          <a href="/about">About</a>
+          {/* <a href="/companies">Companies</a> */}
+          {/* <a href="/about">About</a> */}
           <a href="/contact">Contact</a>
         </nav>
         <a href="/profile" className="btn-primary profile-link">
