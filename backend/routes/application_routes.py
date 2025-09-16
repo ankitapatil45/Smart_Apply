@@ -1,20 +1,31 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, request, jsonify
+from extensions import db
+from models import Application
+from models.application import ApplicationStatus
+from smart_apply import process_application  # your function that takes application_id
 
-# Blueprint define karo
 application_bp = Blueprint("application", __name__, url_prefix="/applications")
 
-# Example route: get all applications (dummy data)
-@application_bp.route("/", methods=["GET"])
-def get_applications():
-    return jsonify([
-        {"id": 1, "job_id": 2, "candidate_id": 5, "status": "Applied"},
-        {"id": 2, "job_id": 3, "candidate_id": 6, "status": "Reviewed"}
-    ])
+@application_bp.route("/process/<int:job_id>", methods=["POST"])
+def process_job_applications(job_id):
+    try:
+        # Fetch all applications for this job
+        applications = Application.query.filter_by(job_id=job_id).all()
+        if not applications:
+            return jsonify({"message": "No applications found for this job"}), 404
 
-# Example route: apply to a job
-@application_bp.route("/apply", methods=["POST"])
-def apply_job():
-    data = request.get_json()
-    return jsonify({
-        "message": f"Application submitted for Job {data.get('job_id')} by Candidate {data.get('candidate_id')}"
-    })
+        results = []
+        for app_obj in applications:
+            # Process each application individually
+            processed_app = process_application(app_obj.application_id)
+            results.append({
+                "application_id": processed_app.application_id,
+                "candidate_id": processed_app.candidate_id,
+                "ai_score": float(processed_app.ai_score),
+                "status": processed_app.status.value
+            })
+
+        return jsonify({"job_id": job_id, "applications": results})
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400

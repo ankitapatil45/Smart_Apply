@@ -18,3 +18,10 @@ class Config:
     # File upload config
     UPLOAD_FOLDER = os.path.join(os.getcwd(), "uploads/resumes")
     ALLOWED_EXTENSIONS = {"pdf", "doc", "docx"}
+
+
+    SMTP_SERVER = "smtp.gmail.com"
+    SMTP_PORT = 465
+    SMTP_USER = "your_email@gmail.com"
+    SMTP_PASSWORD = "your_email_app_password" 
+

@@ -11,7 +11,7 @@ class ApplicationProgress(db.Model):
         db.ForeignKey("application.application_id", ondelete="CASCADE"), 
         nullable=False
     )
-    status = db.Column(db.Enum(ApplicationStatus), nullable=False)  # ✅ Enum instead of String
+    status = db.Column(db.Enum(ApplicationStatus), nullable=False)  # Enum instead of String
     updated_by = db.Column(
         db.Integer, 
         db.ForeignKey("company_employee.employee_id", ondelete="SET NULL")
@@ -26,7 +26,7 @@ class ApplicationProgress(db.Model):
 
 # Status: SHORTLISTED
 
-# Notes: "Candidate matched 90% of requirements, shortlisted for interview."
+# Notes: "Candidate matched ai_score  of requirements, shortlisted for interview."
 
 # Status: INTERVIEW
 

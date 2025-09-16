@@ -16,7 +16,7 @@ def create_app():
     # Enable CORS
     CORS(app, resources={r"/*": {"origins": ["http://localhost:3000"]}})
 
-    # ✅ Register token revocation callback
+    # Register token revocation callback
     @jwt.token_in_blocklist_loader
     def check_if_token_revoked(jwt_header, jwt_payload):
         return jwt_payload["jti"] in revoked_tokens

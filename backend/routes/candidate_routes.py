@@ -162,7 +162,7 @@ def get_active_jobs_for_candidates():
     }), 200
  
  
- 
+
 #=-----------------------------------
 #------ Apply Job by candidate----
 #--------------------------------------
@@ -171,30 +171,39 @@ def get_active_jobs_for_candidates():
 def apply_for_job(job_id):
     current_user_id = get_jwt_identity()
     claims = get_jwt()
- 
-    # Ensure only candidates can apply
+
+    #  Ensure only candidates can apply
     if claims.get("role") != "candidate":
         return jsonify({"error": "Only candidates can apply for jobs"}), 403
- 
+
     # Check if the job exists
     job = Job.query.get(job_id)
     if not job:
         return jsonify({"error": "Job not found"}), 404
- 
-    # Prevent applying to the same job multiple times
-    existing_application = Application.query.filter_by(job_id=job_id, candidate_id=current_user_id).first()
+
+    # Ensure the job is active
+    if job.status != JobStatus.ACTIVE:
+        return jsonify({"error": "This job is not open for applications"}), 400
+
+    # Prevent duplicate applications
+    existing_application = Application.query.filter_by(
+        job_id=job_id,
+        candidate_id=current_user_id
+    ).first()
+
     if existing_application:
         return jsonify({"error": "You have already applied to this job"}), 400
- 
+
     # Create new application
     new_application = Application(
         job_id=job_id,
         candidate_id=current_user_id,
         status=ApplicationStatus.PENDING
     )
+
     db.session.add(new_application)
     db.session.commit()
- 
+
     return jsonify({
         "message": "Application submitted successfully",
         "application": {
@@ -205,3 +214,29 @@ def apply_for_job(job_id):
             "applied_at": new_application.applied_at.isoformat()
         }
     }), 201
+
+
+# ---------------------------------------------------
+# GET Candidate Basic Profile (id, name, email, phone)
+# ---------------------------------------------------
+@candidate_bp.route("/profile/<int:candidate_id>", methods=["GET"])
+@jwt_required()
+def get_profile(candidate_id):
+    current_user_id = get_jwt_identity()
+    claims = get_jwt()
+ 
+    # Candidate khud ka hi profile access kare
+    if claims.get("role") != "candidate" or int(current_user_id) != int(candidate_id):
+        return jsonify({"error": "Unauthorized"}), 403
+ 
+    candidate = Candidate.query.get_or_404(candidate_id)
+ 
+    return jsonify({
+        "message": "Candidate profile fetched successfully",
+        "candidate": {
+            "id": candidate.candidate_id,
+            "name": candidate.name,
+            "email": candidate.email,
+            "phone": candidate.phone
+        }
+    }), 200

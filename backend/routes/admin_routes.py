@@ -62,6 +62,34 @@ def create_hr():
         "created_by": current_user_id
     }), 201
 
+#-------------------------------------
+#---------- List of hr ------------
+#--------------------------------
+@admin_bp.route("/hrs_list", methods=["GET"])
+@jwt_required()
+def list_hrs():
+    claims = get_jwt()
+    if claims.get("role") != "admin":
+        return jsonify({"error": "Only Admins can view HR users"}), 403
+
+    # Fetch all employees with HR role
+    hr_users = CompanyEmployee.query.filter_by(role=RoleEnum.HR).all()
+
+    hr_list = []
+    for hr in hr_users:
+        hr_list.append({
+            "id": hr.employee_id,
+            "name": hr.name,
+            "email": hr.email,
+            "phone": hr.phone,
+            "role": hr.role.value
+        })
+
+    return jsonify({
+        "count": len(hr_list),
+        "hrs": hr_list
+    }), 200
+
 
 #===========================================
 #====== Update and Delete Hr by Admin =====

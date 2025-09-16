@@ -8,3 +8,20 @@ venv/
 
 # VS Code settings
 .vscode/
+
+# this ignores migrations folder
+backend/migrations
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.env/
+
+# Flask / DB
+instance/
+migrations/
+*.db

@@ -19,7 +19,7 @@ def create_or_update_job():
     current_user_id = get_jwt_identity()
     data = request.get_json() or {}
 
-    job_id = data.get("job_id")   # ✅ If present → update, else → new
+    job_id = data.get("job_id")   # If present → update, else → new
     title = data.get("title")
     description = data.get("description")
     requirements = data.get("requirements")

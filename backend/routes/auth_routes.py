@@ -10,7 +10,7 @@ from datetime import timedelta
  
 auth_bp = Blueprint("auth", __name__, url_prefix="/auth")
  
- 
+
 # -----------------------------
 # Route: Register Admin (Only once)
 # -----------------------------
